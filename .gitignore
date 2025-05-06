@@ -1,0 +1,77 @@
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# macOS Finder files
+Icon?
+._*
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+*.log
+
+# Virtual environments
+env/
+venv/
+ENV/
+.venv/
+env.bak/
+env_old/
+
+# Jupyter notebooks
+.ipynb_checkpoints
+
+# TensorFlow/Keras
+*.h5
+*.hdf5
+*.pb
+*.tflite
+checkpoints/
+saved_model/
+
+# Config files
+config.json
+*.yaml
+*.yml
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Images and outputs
+*.png
+*.jpg
+*.jpeg
+*.tiff
+*.bmp
+*.gif
+*.svg
+
+# Data files
+*.csv
+*.tsv
+*.npy
+*.npz
+*.mat
+*.nii
+*.nii.gz
+*.mhd
+*.raw
+*.zip
+
+# Ignore model weights and projections
+decoder/
+sinograms/
+projections/
+
