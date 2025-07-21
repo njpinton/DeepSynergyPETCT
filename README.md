@@ -1,47 +1,17 @@
-# Joint PET/CT Reconstruction
+# Synergistic PET/CT Reconstruction Using Deep Learning
 
-This project performs joint PET/CT image reconstruction from simulated sinograms using a multi-branch β-VAE as a learned deep prior. The method combines classical analytical updates (e.g., MLEM for PET and PWLS for CT) with deep latent-space regularization.
+This repository contains the official implementation of the code developed for the thesis **"Synergistic PET/CT Reconstruction Using Deep Learning"**.
 
-The reconstruction pipeline is based on the framework described in the following preprint:
+The objective of this work is to explore joint PET and CT reconstruction via deep generative priors, leveraging the complementary nature of both modalities. Specifically, the method integrates learned representations from PET and CT to improve image quality in low-dose or undersampled acquisition scenarios.
 
-**Joint PET/CT Reconstruction Using Multi-Branch VAEs**  
-[https://arxiv.org/abs/2404.08748](https://arxiv.org/abs/2404.08748)
+This code supports the experiments presented in the following publications:
 
----
+- N. J. Pinton, A. Bousse, C. Cheze-Le-Rest, and D. Visvikis, ***“Multi-Branch Generative Models for Multichannel Imaging With an Application to PET/CT Synergistic Reconstruction,”*** IEEE Trans. Radiat. Plasma Med. Sci., 2025. DOI: [10.1109/TRPMS.2025.3532176](https://doi.org/10.1109/TRPMS.2025.3532176)
 
-## Optimization Formulation
+- N. J. Pinton, A. Bousse, Z. Wang, C. Cheze-Le-Rest, V. Maxim, C. Comtat, F. Sureau, and D. Visvikis, ***“Synergistic PET/CT Reconstruction Using a Joint Generative Model,”*** in *Proc. Int. Conf. Fully Three-Dimensional Image Reconstruction in Radiology and Nuclear Medicine (Fully3D)*, 2023. Available: [https://arxiv.org/abs/2411.07339](https://arxiv.org/abs/2411.07339)
 
-We formulate the joint reconstruction as a regularized optimization problem:
+- N. J. Pinton, A. Bousse, C. Cheze-Le-Rest, and D. Visvikis, ***“Joint PET/CT Reconstruction Using a Double Variational Autoencoder,”*** in *IEEE Nucl. Sci. Symp. Med. Imag. Conf. (NSS/MIC)*, 2023. DOI: [10.1109/NSSMICRTSD49126.2023.10337812](https://doi.org/10.1109/NSSMICRTSD49126.2023.10337812)
 
+- N. J. Pinton, ***“Synergistic PET/CT Reconstruction Using Deep Learning,”*** Ph.D. dissertation, Univ. Bretagne Occidentale, Brest, France, Dec. 2024. [Online]. Available: [https://theses.hal.science/tel-04996652](https://theses.hal.science/tel-04996652)
 
-```
-(x₁*, x₂*) = argmin_{x₁, x₂} ∑ₖ ηₖ Lₖ(Mₖ(xₖ), yₖ) + β R(x₁, x₂)
-```
-
-
-Where:
-- `yₖ` is the observed sinogram data for modality `k ∈ {PET, CT}`,
-- `Mₖ` is the forward projector for each modality,
-- `Lₖ` is the likelihood loss (e.g., Poisson NLL for PET),
-- `R(x₁, x₂)` is a regularizer coupling the two modalities.
-
----
-
-## Deep Prior via Multi-Branch β-VAE
-
-We introduce a shared latent code `z ∈ ℝ^d` and a decoder `G_θ` trained to reconstruct PET/CT image pairs. The regularization term becomes:
-
-```
-R(x₁, x₂) = min_z ∑ₖ ηₖ / 2 * || xₖ - Gₖ(z) ||²
-```
-
-This encourages the reconstructed images to lie on the learned manifold of PET/CT pairs modeled by the decoder branches of a pretrained β-VAE.
-
----
-
-## Implementation Summary
-
-- PET images are reconstructed via MLEM, using attenuation correction derived from the CT image.
-- CT images are reconstructed via PWLS (Penalized Weighted Least Squares).
-- The latent code `z` is optimized using L-BFGS to minimize the mismatch between the current reconstruction and the generative model output.
-- A pretrained multi-branch β-VAE provides the learned PET/CT prior through its decoder.
+The implemented models are based on **Variational Autoencoders (VAEs)** and **Generative Adversarial Networks (GANs)**. These models are designed to learn multi-modal latent priors and act as deep regularizers within a synergistic PET/CT reconstruction framework.
