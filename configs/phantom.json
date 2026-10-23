@@ -1,0 +1,12 @@
+{
+  "image": {"size": 128, "vox_mm": 3.9},
+  "pet": {"n_angles": 120, "fwhm_mm": 0.0, "scale": 2.0, "background": 0.0, "kvp": 120},
+  "ct": {"backend": "rotation", "n_angles": 120, "i0": 2000.0, "background": 0.0},
+  "recon": {
+    "init_iters": 20, "outer_iters": 5, "z_fit_iters": 5,
+    "pet_subiters": 30, "ct_subiters": 100,
+    "eta": 0.5, "beta_pet": 20.0, "beta_ct": 5.0, "stride": 8,
+    "z_init_range": 3.0, "lbfgs_max_iter": 300, "lbfgs_factr": 1e7, "alpha": 0.0
+  },
+  "seed": 0
+}

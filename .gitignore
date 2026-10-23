@@ -40,7 +40,6 @@ checkpoints/
 saved_model/
 
 # Config files
-config.json
 *.yaml
 *.yml
 
@@ -76,3 +75,11 @@ decoder/
 sinograms/
 projections/
 
+
+# Project outputs
+data/
+models/
+results/
+logs/
+.pytest_cache/
+!docs/*.png

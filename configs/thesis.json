@@ -1,0 +1,13 @@
+{
+  "image": {"size": 512, "vox_mm": 0.9765625},
+  "pet": {"n_angles": 120, "fwhm_mm": 0.1, "scale": 10.0, "background": 0.0, "kvp": 120},
+  "ct": {"backend": "astra", "n_angles": 120, "i0": 2000.0, "background": 0.0,
+         "det_width_mm": 1.2, "det_count": 750, "source_origin_mm": 600.0, "origin_det_mm": 600.0},
+  "recon": {
+    "init_iters": 30, "outer_iters": 5, "z_fit_iters": 5,
+    "pet_subiters": 30, "ct_subiters": 100,
+    "eta": 0.5, "beta_pet": 300.0, "beta_ct": 80.0, "stride": 16,
+    "z_init_range": 3.0, "lbfgs_max_iter": 1000, "lbfgs_factr": 10.0, "alpha": 0.0
+  },
+  "seed": 0
+}
