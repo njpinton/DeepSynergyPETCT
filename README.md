@@ -8,15 +8,15 @@ This is the reference implementation of the method in the papers and thesis belo
 
 ## Method
 
-For PET activity `x₁` and CT attenuation `x₂`, the prior is
+For PET activity $x_1$ and CT attenuation $x_2$, the prior is
 
+```math
+R(x_1, x_2) = \sum_{p} \min_{z} \; \eta \,\bigl\| G_1(z) - s_1 P_p x_1 \bigr\|_2^2 + (1-\eta) \,\bigl\| G_2(z) - s_2 P_p x_2 \bigr\|_2^2 + \alpha \|z\|_2^2
 ```
-R(x₁, x₂) = Σ_p min_z  η‖G₁(z) − s₁P_p x₁‖² + (1−η)‖G₂(z) − s₂P_p x₂‖² + α‖z‖²
-```
 
-where `G = (G₁, G₂)` is the two-branch decoder, `P_p` extracts patch `p`, and `s₁, s₂` are the training normalisation constants. Reconstruction alternates:
+where $G = (G_1, G_2)$ is the two-branch decoder, $P_p$ extracts patch $p$, and $s_1, s_2$ are the training normalisation constants. Reconstruction alternates:
 
-1. **z-update**: fit one latent code per patch to the current PET and CT patches (all patches in a single batched L-BFGS);
+1. **$z$-update**: fit one latent code per patch to the current PET and CT patches (all patches in a single batched L-BFGS);
 2. **PET update**: attenuation-corrected MLEM surrogate plus the quadratic prior, solved in closed form;
 3. **CT update**: PWLS separable surrogate plus the quadratic prior, solved in closed form.
 
