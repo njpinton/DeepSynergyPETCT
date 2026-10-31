@@ -9,7 +9,7 @@
 > M8 (approximate adjoint of the rotation projector) is kept and documented. The original text follows.
 
 **Date:** 2026-10-23
-**Scope:** this repo (`src/`) and the local research scripts in `~/projects/phd/code/pet-ct-vae/` (not on GitHub).
+**Scope:** this repo (`src/`) and the local research scripts in `~/projects/petct-synergy/code/pet-ct-vae/` (not on GitHub).
 **Verdict:** the method is implemented, but the public repo can't reproduce the thesis yet. Three of the issues below break the PET/CT reconstruction itself, and the most up-to-date code (`recon_joint_patches.py`) isn't on GitHub.
 
 Line numbers refer to the files as they are after the fixes in section 0.
